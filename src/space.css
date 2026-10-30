@@ -1,0 +1,96 @@
+:root {
+  --bg: #080d1b;
+  --gold: #d7c89f;
+  --blue: #9bbfd0;
+  --purple: #b7aed7;
+  --red: #c9949a;
+  --line: rgba(190, 205, 231, 0.14);
+  --panel: rgba(17, 24, 42, 0.86);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background: #080d1b;
+}
+
+.shell {
+  background: #080d1b;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: #080d1b;
+  isolation: isolate;
+}
+
+.backdrop:before,
+.backdrop:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.backdrop:before {
+  inset: -28px;
+  background: url('./assets/nasa-carina-nebula.jpg') center / cover no-repeat;
+  filter: brightness(0.34) saturate(0.72);
+  transform: scale(1.025);
+}
+
+.backdrop:after {
+  background-image: linear-gradient(180deg, rgba(4, 8, 18, 0.14), rgba(4, 8, 18, 0.38)), url('./assets/nasa-carina-nebula.jpg');
+  background-size: cover, auto 100%;
+  background-position: center, center;
+  background-repeat: no-repeat;
+  filter: brightness(0.72) saturate(0.78);
+  animation: space-photo-drift 100s ease-in-out infinite alternate;
+}
+
+@keyframes space-photo-drift {
+  from { transform: scale(1); }
+  to { transform: scale(1.025); }
+}
+
+.hero {
+  background: linear-gradient(90deg, rgba(7, 11, 23, 0.84) 0%, rgba(7, 11, 23, 0.48) 43%, rgba(7, 11, 23, 0.08) 100%);
+  border-color: rgba(190, 205, 231, 0.15);
+}
+
+.hero:before {
+  background: linear-gradient(90deg, rgba(7, 11, 23, 0.54) 0%, rgba(7, 11, 23, 0.24) 42%, transparent 100%);
+}
+
+.panel {
+  background: linear-gradient(145deg, rgba(17, 24, 42, 0.76), rgba(10, 16, 31, 0.82));
+  backdrop-filter: blur(14px);
+}
+
+.metric {
+  background: linear-gradient(145deg, rgba(22, 31, 53, 0.74), rgba(12, 19, 37, 0.82));
+  backdrop-filter: blur(12px);
+}
+
+.topbar {
+  background: rgba(8, 13, 27, 0.58);
+}
+
+.sidebar {
+  background: rgba(9, 15, 31, 0.72);
+  backdrop-filter: blur(18px);
+}
+
+@media (max-width: 560px) {
+  .hero:before {
+    background: linear-gradient(90deg, rgba(7, 11, 23, 0.86), rgba(7, 11, 23, 0.66) 72%, rgba(7, 11, 23, 0.38));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop:after {
+    animation: none;
+  }
+}
